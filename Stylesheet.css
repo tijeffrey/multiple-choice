@@ -30,6 +30,7 @@
 .final-Answer{
   display: none;
   position:absolute;
+  z-index: 10;
   text-align: center;
   border: 5px; 
   background-color: aqua;
@@ -39,6 +40,7 @@
 .correctScreen{
   display: none;
   position: absolute;
+  z-index: 10;
   text-align: center;
   border: 5px; 
   background-color: rgb(7, 255, 28);
