@@ -5,7 +5,6 @@
   justify-content: center;
   gap: 20px;
   position:relative;
-
 }
 
 .option{
@@ -85,6 +84,15 @@
 }
 
 .score{
-  float: right;
-  clear: both;
+  position: absolute;
+}
+
+.youWin{
+  display: none;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: green;
 }

@@ -10,35 +10,37 @@ let tryAgain = document.querySelector('#tryAgain')
 
 let score = document.querySelector('.score')
 let Number = 0
+let count = 0
+
 
 const overlay = document.getElementById('overlay')
-
-
 let finalYes = document.querySelector('#finalYes');
 
 var myButtons = document.querySelectorAll('.option');
 let finalAnswer = document.querySelector('.final-Answer');
 let greenScreen = document.querySelector('.correctScreen');
 
+
+
 (function start(){
 for (var i = 0; i < myButtons.length; i++) {
   var button = myButtons[i];
   button.addEventListener('click', function() {
     var x = document.querySelectorAll(".activated");
-    overlay.classList.add('active')
 
     if(x.length) {
         x[0].classList.remove('activated');
     }
     this.classList.toggle("activated");
-    finalAnswer.style.display = 'block'
+    finalAnswer.style.display = 'block';
+    overlay.classList.add('active')
   });
 }
 })();
 
-let finalNo = document.querySelector('#finalNo')
+let finalNo = document.querySelector('#finalNo');
 
-finalNo.addEventListener('click', resetFunction)
+finalNo.addEventListener('click', resetFunction);
 
 function resetFunction(){
     finalAnswer.style.display = 'none'
@@ -50,7 +52,7 @@ function resetFunction(){
         x[0].classList.remove('activated');
     }
 }
-}
+};
 
 const myQuestions = [
   {
@@ -86,8 +88,6 @@ const myQuestions = [
   },
 ];
 
-let count = 0
-
 function questionsIntoBoxes(){
     mainQuestion.innerText = myQuestions[count].question
     optionA.innerText = myQuestions[count].answers.a
@@ -96,21 +96,21 @@ function questionsIntoBoxes(){
     optionD.innerText = myQuestions[count].answers.d
 };
 
-questionsIntoBoxes()
+questionsIntoBoxes();
 
 nextQuestion.addEventListener('click', function(){
     count++
     questionsIntoBoxes()
     resetFunction()
     greenScreen.style.display = 'none'
-  })
+  });
 
 tryAgain.addEventListener('click', function(){
     count = 0
     questionsIntoBoxes()
     resetFunction()
     gameOver.style.display = 'none'
-})
+});
 
 finalYes.addEventListener('click', checkAnswer)
 
@@ -118,15 +118,25 @@ function checkAnswer(){
   var elements = document.getElementsByClassName('activated');
   var id = elements[0].getAttribute( 'id' );
 
-  if (String(id) === String(myQuestions[count].correctAnswer)){
+  if (Number !== 3 && String(id) === String(myQuestions[count].correctAnswer)){
     finalAnswer.style.display = 'none'
     greenScreen.style.display = 'block'
     Number++
-    score.textContent = "Score:" + Number
+    score.textContent = Number
   }
-  else if (String(id) !== String(myQuestions[count].correctAnswer)){
-    gameOver.style.display = 'block'
-  }
-  console.log(String(id))
 
-}
+  else if (Number === 3){
+    greenScreen.style.display = 'none';
+    overlay.classList.remove('active');
+    document.querySelector('.youWin').style.display = 'block';
+  }
+
+  else if (String(id) !== String(myQuestions[count].correctAnswer)){
+    gameOver.style.display = 'block';
+  }
+};
+
+console.log(Number);
+
+
+
