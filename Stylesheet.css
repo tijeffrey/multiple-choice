@@ -47,6 +47,16 @@
   top: 200px;
 }
 
+.gameOver{
+  display: none;
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  border: 5px; 
+  background-color: rgb(255, 7, 7);
+  top: 200px;
+}
+
 .freezeBackground{
   background-color: grey;
 }
@@ -72,4 +82,9 @@
 #overlay.active {
   opacity: 1;
   pointer-events: all;
+}
+
+.score{
+  float: right;
+  clear: both;
 }

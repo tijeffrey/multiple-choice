@@ -3,7 +3,13 @@ let optionA = document.querySelector('.a');
 let optionB = document.querySelector('.b');
 let optionC = document.querySelector('.c');
 let optionD = document.querySelector('.d');
+
 let nextQuestion = document.querySelector('#nextQuestion');
+let gameOver = document.querySelector('.gameOver')
+let tryAgain = document.querySelector('#tryAgain')
+
+let score = document.querySelector('.score')
+let Number = 0
 
 const overlay = document.getElementById('overlay')
 
@@ -99,6 +105,13 @@ nextQuestion.addEventListener('click', function(){
     greenScreen.style.display = 'none'
   })
 
+tryAgain.addEventListener('click', function(){
+    count = 0
+    questionsIntoBoxes()
+    resetFunction()
+    gameOver.style.display = 'none'
+})
+
 finalYes.addEventListener('click', checkAnswer)
 
 function checkAnswer(){
@@ -108,9 +121,11 @@ function checkAnswer(){
   if (String(id) === String(myQuestions[count].correctAnswer)){
     finalAnswer.style.display = 'none'
     greenScreen.style.display = 'block'
+    Number++
+    score.textContent = "Score:" + Number
   }
   else if (String(id) !== String(myQuestions[count].correctAnswer)){
-    console.log('Incorrect!')
+    gameOver.style.display = 'block'
   }
   console.log(String(id))
 
