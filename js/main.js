@@ -125,13 +125,13 @@ function checkAnswer(){
     score.textContent = Number
   }
 
-  else if (Number === 3){
+  if (Number === 3){
     greenScreen.style.display = 'none';
     overlay.classList.remove('active');
     document.querySelector('.youWin').style.display = 'block';
   }
 
-  else if (String(id) !== String(myQuestions[count].correctAnswer)){
+  if (String(id) !== String(myQuestions[count].correctAnswer)){
     gameOver.style.display = 'block';
   }
 };
